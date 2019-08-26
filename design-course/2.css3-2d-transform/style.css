@@ -1,0 +1,35 @@
+.box {
+  display: inline-block;
+  margin-left: 32px;
+  width: 60px;
+  height: 68px;
+  line-height: 68px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid #ebebeb;
+}
+
+.box0 {
+  margin-left: 0;
+}
+
+.box1 {
+  transform: skewX(30deg);
+}
+
+.box2 {
+  transform: scaleX(0.5);
+}
+
+.box3 {
+  transform: rotate(45deg);
+}
+
+.box4 {
+  transform: translate(10px, 20px);
+}
+
+.box5 {
+  /* TODO: use transform: matrix() to replace below porperty */
+  transform: skewX(30deg) scaleX(0.5) rotate(45deg) translate(10px, 20px);
+}
