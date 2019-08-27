@@ -1,0 +1,19 @@
+<template>
+  <div>
+    <label>子组件: </label><input value="{= msg =}"/> <button on-click="notityParent">通知父组件</button>
+  </div>
+</template>
+
+<script>
+  export default {
+    initData() {
+      return {
+        msg: ''
+      };
+    },
+    notityParent() {
+      const msg = this.data.get('msg')
+      this.dispatch('new-message-coming', msg)
+    }
+  }
+</script>

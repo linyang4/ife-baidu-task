@@ -1,0 +1,39 @@
+<template>
+  <div class="parent-container">
+    <child />
+    <p class="{{active ? 'active' : ''}}">我是父组件: {{msg || '静静等待用户输入'}}</p>
+  </div>
+</template>
+
+<script>
+  import Child from './Child.san'
+  export default {
+    components: {
+      'child': Child
+    },
+    initData() {
+      return {
+        msg: ''
+      };
+    },
+    messages: {
+      'new-message-coming': function({value}) {
+        const msg = value.trim()
+        this.data.set('msg', msg)
+        this.dispatch('new-message-coming', msg)
+      }
+    },
+    computed: {
+      active: function() {
+        const msg = this.data.get('msg')
+        return msg !== ''
+      }
+    }
+  }
+</script>
+
+<style>
+  .parent-container>.active {
+    color: green;
+  }
+</style>

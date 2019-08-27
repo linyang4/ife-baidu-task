@@ -1,0 +1,38 @@
+<template>
+  <div class="grandparent-container">
+    <child />
+    <p class="{{active ? 'active' : ''}}">我是更高层次父组件: {{msg || '我也静静等待用户输入'}}</p>
+  </div>
+</template>
+
+<script>
+  import Parent from './Parent.san'
+  export default {
+    components: {
+      'child': Parent
+    },
+    initData() {
+      return {
+        msg: ''
+      };
+    },
+    messages: {
+      'new-message-coming': function({value}) {
+        const msg = value.trim()
+        this.data.set('msg', msg)
+      }
+    },
+    computed: {
+      active: function() {
+        const msg = this.data.get('msg')
+        return msg !== ''
+      }
+    }
+  }
+</script>
+
+<style>
+  .grandparent-container>.active {
+    color: pink;
+  }
+</style>
