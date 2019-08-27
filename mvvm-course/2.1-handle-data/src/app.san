@@ -1,0 +1,50 @@
+<template>
+  <div>
+    <section class="input-container">
+      <input type="text" placeholder="姓名 (string)" value="{= name =}"/>
+      <input type="number" placeholder="年龄 (number)" value="{= age =}"/>
+      <input type="text" placeholder="简介 (string)" value="{= des =}"/>
+    </section>
+    <section class="btn-container">
+      <label>信息: </label> <button on-click="clearData()">移除信息</button>
+    </section>
+    <section class="summary">
+      <span>姓名: {{name}}</span>
+      <span>年龄: {{age}}</span>
+      <span>简介: {{des}}</span>
+    </section>
+  </div>
+</template>
+
+<script>
+  export default {
+    initData() {
+      return {
+        name: null,
+        age: null,
+        des: null
+      };
+    },
+    clearData() {
+      this.data.set('name', null)
+      this.data.set('age', null)
+      this.data.set('des', null)
+    }
+  }
+</script>
+
+<style>
+  input {
+    padding: 4px 12px;
+    font-size: 16px;
+    color: #ccc;
+  }
+
+  .btn-container {
+    margin: 8px 0;
+  }
+  .summary {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
