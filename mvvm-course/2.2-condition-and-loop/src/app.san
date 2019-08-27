@@ -1,0 +1,65 @@
+<template>
+  <div>
+    <button on-click="addEmployee">添加</button>
+    <table>
+      <thead>
+        <tr>
+          <td>姓名</td>
+          <td>审核状态</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr s-for="employee in employees">
+          <td>{{employee.name}}</td>
+          <td>{{employee.status}}</td>
+          <td><button on-click='updateEmployee(employee)'>{{employee.status === "待审核" ? '审核' : '删除'}}</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+  const statusArr = ['合格', '不合格', '待审核']
+  let counter = 1
+  export default {
+    initData() {
+      return {
+        employees: [
+          {name: '张三', status: '合格'},
+          {name: '李四', status: '不合格'},
+          {name: '王五', status: '待审核'},
+          {name: '赵六', status: '待审核'},
+          {name: '孙七', status: '待审核'},
+        ]
+      };
+    },
+    updateEmployee(employee) {
+      const {name, status} = employee
+      if(status === '待审核') {
+        const employees = this.data.get('employees').map(employee => (
+          employee.name === name ? 
+            {...employee, status: '合格'} : 
+            employee
+        ))
+        this.data.set('employees', employees)
+      } else {
+        this.data.remove('employees', employee)
+      }
+    },
+    addEmployee() {
+      const randomIndex = Math.round(Math.random() * 2)
+      this.data.push('employees', {
+        name: `name${counter++}`,
+        status: statusArr[randomIndex]
+      })
+    }
+  }
+</script>
+
+<style>
+  .hello {
+    color: blue;
+  }
+</style>
