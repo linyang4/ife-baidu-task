@@ -1,0 +1,34 @@
+<template>
+  <div id="block" style="background: {{backgroundColor}}" on-click="toggleBgc">
+    {{backgroundColor}}
+  </div>
+</template>
+
+<script>
+  export default {
+    initData() {
+      return {
+        backgroundColor: 'red'
+      };
+    },
+    toggleBgc() {
+      const curBackgroundColor = this.data.get('backgroundColor')
+      const newBackgroundColor = curBackgroundColor === 'red' ? 'blue' : 'red'
+      this.data.set('backgroundColor', newBackgroundColor)
+    }
+  }
+</script>
+
+<style>
+  #block { 
+    width:100px;
+    height:100px;
+    line-height: 100px;
+    text-align: center;
+    color: white;
+  }
+
+  #block::selection {
+    background: none;
+  }
+</style>
