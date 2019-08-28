@@ -1,0 +1,24 @@
+<template>
+  <div>
+    <input s-ref="checkbox" type="checkbox" checked="{{!!checked}}" disabled="{{!!disabled}}" on-change="handleChange"/> 
+    <span>{{ checked ? trueValue : falseValue}}</span>
+  </div>
+</template>
+
+<script>
+  export default {
+    attached() {
+      const isIndeterminate = this.data.get('indeterminate')
+      if(isIndeterminate) { 
+        this.ref('checkbox').indeterminate = true
+      }
+    },
+    handleChange($event) {
+      const isChecked = $event.target.checked
+      this.data.set('checked', isChecked)
+      this.fire('change', $event)
+    }
+  }
+</script>
+
+<style></style>

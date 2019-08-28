@@ -1,0 +1,32 @@
+<template>
+  <div>
+    <input 
+      on-input="handleOnInput" 
+      on-focus="handleOnFocus" 
+      on-blur="handleOnIBlur" 
+      placeholder="{{placeholder || '请输入文字'}}" 
+      value="{{value || ''}}"
+      disabled="{{!!disabled}}" 
+      readonly="{{!!readonly}}"
+    />
+  </div>
+</template>
+
+<script>
+  export default {
+    handleOnInput($event) {
+      this.fire('input', $event)
+      return $event
+    },
+    handleOnFocus($event) {
+      this.fire('focus', $event)
+      return $event
+    },
+    handleOnIBlur($event) {
+      this.fire('blur', $event)
+      return $event
+    },
+  }
+</script>
+
+<style></style>

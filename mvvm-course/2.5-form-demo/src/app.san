@@ -1,0 +1,41 @@
+<template>
+  <div>
+    <h2>san-input demo</h2>
+    <h3>use 'value' props</h3>
+    <san-input value="value from props" />
+
+    <h3>use 'placeholder' props</h3>
+    <san-input placeholder="placeholder from props" />
+
+    <h3>use 'disabled' props</h3>
+    <san-input disabled="{{true}}" />
+
+    <h3>use 'readonly' props</h3>
+    <san-input readonly="{{true}}" />
+
+    <h2>san-checkbox demo</h2>
+    <san-checkbox indeterminate="{{false}}" trueValue="yes" falseValue="no" on-change="onChange" checked="{{true}}"/>
+    <san-checkbox indeterminate="{{true}}" on-change="onChange" />
+  </div>
+</template>
+
+<script>
+  import SanInput from './components/SanInput.san'
+  import SanCheckbox from './components/SanCheckbox.san'
+  export default {
+    components: {
+      'san-input': SanInput,
+      'san-checkbox': SanCheckbox
+    },
+    onInput($event) {
+      console.log('handle input from parent')
+      console.log($event)
+    },
+    onChange($event) {
+      console.log('handle change from parent')
+      console.log($event)
+    }
+  }
+</script>
+
+<style></style>
