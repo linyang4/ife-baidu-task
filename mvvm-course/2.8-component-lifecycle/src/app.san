@@ -1,0 +1,19 @@
+<template>
+  <div>
+    <expansion-pannel expanded="{{true}}">
+      <div slot="pannel-body">hello dsaaaaaaaaaaaaaaaaaaadsadj saidjnsandsancvdnsdidiofdsnn</div>
+      <div slot="pannel-body">hello dsaaaaaaaaaaaaaaaaaaadsadj saidjnsandsancvdnsdidiofdsnn</div>
+      <div slot="pannel-body">hello dsaaaaaaaaaaaaaaaaaaadsadj saidjnsandsancvdnsdidiofdsnn</div>
+      <div slot="pannel-body">hello dsaaaaaaaaaaaaaaaaaaadsadj saidjnsandsancvdnsdidiofdsnn</div>
+    </expansion-pannel>
+  </div>
+</template>
+
+<script>
+  import ExpansionPannel from './components/ExpanSionPannel.san'
+  export default {
+    components: {
+      'expansion-pannel': ExpansionPannel
+    },
+  }
+</script>
