@@ -1,0 +1,36 @@
+{
+  "name": "1.2-san-webpack-env",
+  "version": "1.0.0",
+  "description": "use webpack to build san develop environment",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server --config ./config/webpack.dev.js",
+    "build": "webpack --config ./config/webpack.prod.js"
+  },
+  "keywords": [
+    "san",
+    "webpack",
+    "babel"
+  ],
+  "author": "linyang4",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "san-loader": "^0.0.7",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "san": "^3.7.8",
+    "san-transition": "^1.1.0"
+  }
+}

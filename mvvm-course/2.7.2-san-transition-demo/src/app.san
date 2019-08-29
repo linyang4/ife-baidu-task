@@ -1,0 +1,98 @@
+<template>
+  <div class="container">
+    <ul class="list">
+      <li 
+        s-for="employee in employees" 
+        class="list-item {{activeEmployeeName === employee.name ? 'active' : ''}}"
+        on-click="handleClick(employee.name)"
+      >
+        <span>{{employee.name}}</span>
+        <span>{{employee.sex}}</span>
+        <span>{{employee.age}}</span>
+      </li>
+    </ul>
+
+    <div class="modal {{activeEmployeeName !== '' ? 'show' : ''}}">
+      <p>姓名: {{activeEmployee.name}}</p>
+      <p>性别: {{activeEmployee.sex}}</p>
+      <p>年龄: {{activeEmployee.age}}</p>
+    </div>
+  </div>
+</template>
+<script>
+  import { transition } from 'san-transition'
+  export default {
+    initData() {
+      return {
+        employees: [
+          {name: '张三', sex: '男', age: 18},
+          {name: '李四', sex: '女', age: 22},
+          {name: '王二', sex: '男', age: 16},
+        ],
+        activeEmployeeName: ''
+      }
+    },
+    handleClick(name) {
+      const activeEmployeeName = this.data.get('activeEmployeeName')
+      if(activeEmployeeName === name ) {
+        this.data.set('activeEmployeeName', '')
+      } else {
+        this.data.set('activeEmployeeName', name)
+      }
+    },
+    computed: {
+      activeEmployee() {
+        const employees = this.data.get('employees')
+        const activeEmployeeName = this.data.get('activeEmployeeName')
+        return employees.find(({name}) => name === activeEmployeeName)
+      }
+    }
+  }
+</script>
+<style>
+  * {
+    box-sizing: border-box;
+
+  }
+
+  .container {
+    padding-left: 24px;
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    padding: 6px 12px;
+    border: 1px solid #112233;
+    width: 240px;
+    list-style-type: none;
+    transition: all .5s;
+  }
+
+  .list-item.active {
+    transform: scale(1.1);
+  }
+
+  .modal {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px 32px;
+    width: 240px;
+    color: #fff;
+    background: #112233;
+    transition: all .5s ;
+  }
+
+  .modal.show {
+    opacity: 1;
+  }
+
+</style>
